@@ -74,16 +74,19 @@ Then run (adjust paths as needed):
 
 <BASH>
 create-dmg \
-  --volname "Whats 1.0.1_x64" \
+  --volname "Whats 1.0.1" \
   --volicon "appicon.icns" \
   --window-pos 200 120 \
   --window-size 500 300 \
   --icon-size 100 \
-  --icon "Whats.app" 100 100 \
+  --icon "Whats.app"    100 100 \
+  --icon "CREDITS.txt"  250 100 \
   --hide-extension "Whats.app" \
+  --hide-extension "CREDITS.txt" \
   --app-drop-link 400 100 \
-  "../Whats_1.0.1_x64.dmg" \
+  "../Whats_1.0.1.dmg" \
   "dist/"
+
 
 
 Creating an Installer (Windows Only)
