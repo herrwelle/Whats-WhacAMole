@@ -70,7 +70,7 @@ First, install create-dmg (if needed):
 
 <BASH>
 brew install create-dmg
-Then run (adjust paths as needed):
+cd ~/Desktop/Whats_Game    # Or your custom path
 
 <BASH>
 create-dmg \
