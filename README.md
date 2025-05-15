@@ -96,7 +96,11 @@ Output
 Once completed, the installer Whats_Setup.exe will be generated in the Output folder (located in the script directory).
 
 
+❗ Important Copyright Notice:
 
+Some audio assets are restricted to non-commercial use only (see CREDITS.txt for details).
+You MUST include CREDITS.txt in all distributed packages to comply with licensing terms.
+For commercial use, replace them with CC0/licensed audio or obtain permission from the original authors.
 
 📦 Pre-Built Releases
 Download ready-to-play versions for:
