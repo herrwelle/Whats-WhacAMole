@@ -1,18 +1,60 @@
+#!/usr/bin/env python3
 # Whats 1.0 3995Hz 12.05.25
 
-try:
-    from AppKit import NSApplication
-    app = NSApplication.sharedApplication()
-    app.activateIgnoringOtherApps_(True)
-except ImportError:
-    pass
+import os, sys, random, subprocess, tempfile, traceback
 
-import pygame, random, os, sys, traceback
+# ——————— macOS：激活到前台（保持原逻辑） ———————
+try:
+    from AppKit import NSApplication, NSImage
+    NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
+except ImportError:
+    NSApplication = None
+    NSImage = None
+
+# ——————— 图标处理 ———————
+def set_app_icon():
+    """
+    先创建好窗口，再调用本函数：
+    1. 把 pygame 窗口图标替换成自定义图标，避免黄色小恐龙。
+    2. 同步 Dock 图标。
+    """
+    try:
+        import pygame
+        # —— A. 给 pygame 窗口 ——
+        icon_surf = None
+        icns_path = os.path.join(os.path.dirname(sys.argv[0]), 'appicon.icns')
+        if sys.platform == 'darwin' and os.path.exists(icns_path):
+            tmp_png = os.path.join(tempfile.gettempdir(), 'whats_icon32.png')
+            # 用 macOS 自带 sips 把 icns 提取成 32×32 png
+            subprocess.call(
+                ['/usr/bin/sips', '-s', 'format', 'png',
+                 '--resampleWidth', '32', icns_path, '--out', tmp_png],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+            )
+            if os.path.exists(tmp_png):
+                icon_surf = pygame.image.load(tmp_png).convert_alpha()
+        # 兜底：images/appicon32.png
+        if icon_surf is None:
+            fallback_png = os.path.join('images', 'appicon32.png')
+            if os.path.exists(fallback_png):
+                icon_surf = pygame.image.load(fallback_png).convert_alpha()
+        if icon_surf:
+            pygame.display.set_icon(icon_surf)
+
+        # —— B. 给 Dock（可选，但不影响 pygame） ——
+        if sys.platform == 'darwin' and NSApplication and NSImage and os.path.exists(icns_path):
+            img = NSImage.alloc().initWithContentsOfFile_(icns_path)
+            if img:
+                NSApplication.sharedApplication().setApplicationIconImage_(img)
+    except Exception as e:
+        print('⚠️  设置窗口/ Dock 图标失败：', e)
 
 # ——————— Pygame 初始化 ———————
+import pygame, traceback
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
-if not pygame.mixer.get_init(): pygame.mixer.init()
+if not pygame.mixer.get_init():
+    pygame.mixer.init()
 pygame.mixer.set_num_channels(32)
 
 # ——————— 常量配置 ———————
@@ -50,6 +92,10 @@ SHAKE_INTENSITY   = 5          # 震动幅度(px)
 # ——————— 窗口 ———————
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Whats")
+
+# ★★★ 关键：窗口建好后立即设置图标 ★★★
+set_app_icon()
+
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(False)
 
@@ -112,22 +158,18 @@ BUTTONS = {
 COLOR_WOOD  = (160,82,45)
 DARK_WALNUT = (75, 50, 30)
 font_btn    = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
+font_info_small = pygame.font.SysFont('Comic Sans MS', 15, bold=True)
 font_info   = pygame.font.SysFont('Comic Sans MS', 20, bold=True)
 font_score  = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
 
 exit_txt    = font_btn.render('Exit', True, COLOR_WOOD)
 exit_rect   = exit_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
 
-# 先渲染三行文字的 Surface
-version_txt = font_info.render('v1.0.1', True, DARK_WALNUT)
-brand_txt   = font_info.render('Musimanda', True, DARK_WALNUT)
-design_txt  = font_info.render('Design by 3995 Hz', True, DARK_WALNUT)
+# —— 左下角一行信息 ——  
 
-# 然后依次定义它们的 Rect，确保 design_rect 使用 exit_rect，
-# brand_rect 使用 design_rect，version_rect 使用 brand_rect
-design_rect = design_txt.get_rect(bottomleft=(10, exit_rect.bottom))
-brand_rect  = brand_txt.get_rect(bottomleft=(10, design_rect.top - 5))
-version_rect= version_txt.get_rect(bottomleft=(10, brand_rect.top - 5))
+info_txt  = font_info_small.render('v1.0.1 · Musimanda · Design by 3995 Hz', True, DARK_WALNUT)
+
+info_rect = info_txt.get_rect(bottomleft=(10, exit_rect.bottom))
 
 back_txt    = font_btn.render('Back', True, COLOR_WOOD)
 back_rect   = back_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
@@ -268,9 +310,7 @@ def menu_loop():
                 screen.blit(wood_imgs[k], r.topleft)
         # 文本
         screen.blit(exit_txt,    exit_rect.topleft)
-        screen.blit(version_txt, version_rect.topleft)
-        screen.blit(brand_txt,   brand_rect.topleft)
-        screen.blit(design_txt,  design_rect.topleft)
+        screen.blit(info_txt, info_rect.topleft)
         # 锤子自动抬起
         if hammer_down and now-hammer_timer>=HAMMER_HOLD_TIME:
             if not pygame.mouse.get_pressed()[0]:
@@ -297,7 +337,6 @@ def menu_loop():
                     for k, r in BUTTONS.items():
                         if r.collidepoint(e.pos): click_choice = k; break
 
-#across game_loop... (rest unchanged)
 # ——————— 游戏循环 ———————
 def game_loop(mode):
     play_music(bg_music)
