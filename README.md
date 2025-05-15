@@ -3,7 +3,8 @@
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
 Follow these steps to set up and build the project locally.
 
-![游戏演示 GIF](demo/Whats_DEMO.gif)
+![Game Demo GIF](Demo/Whats_DEMO.gif)
+
 
 # 📂 Initial Setup
 Create a project folder** (e.g., `Whats_Game`) on your Desktop or any preferred location.  
