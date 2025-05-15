@@ -19,25 +19,23 @@ cd C:\Users\YourUsername\...     # Or your custom path (Windows)
 python3 -m venv venv             # Create virtual environment
 python -m venv venv              # Create virtual environment (Windows)
 
-source venv/bin/activate         # Activate (macOS/Linux)
-venv\Scripts\activate            # Activate (Windows)
+source venv/bin/activate         # macOS
+venv\Scripts\activate            # Windows
 After activation, your terminal prompt should show (venv).
 
 
 
 2. Install Dependencies
 <BASH>
-pip install jaraco.text pygame py2app
-⚠️ If you encounter permission errors on macOS, avoid --break-system-packages. Instead:
-
-Use pip install --user (local install), or
-Recreate the venv with python3 -m venv --system-site-packages venv.
-
+pip3 install jaraco.text pygame py2app  # macOS
+pip install pygame py2app               # Windows
+⚠️ Windows users, please use main_win.py and rename it to main.py by removing the _win suffix.
 
 
 3. Test the Game
 <BASH>
-python3 main.py
+python3 main.py  # macOS
+python main.py   # Windows
 
 ⚠️ If you encounter the error pygame.error: Unsupported image format on Windows:
 Cause: PNG files generated on macOS may use an incompatible format.
