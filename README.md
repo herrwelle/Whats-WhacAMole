@@ -4,7 +4,7 @@
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
 Follow these steps to set up and build the project locally.
 
-![Game Demo GIF](Demo/Whats_DEMO.gif)
+![Game Demo GIF](Demo/Whats_demo.gif)
 
 
 # 📂 Initial Setup
