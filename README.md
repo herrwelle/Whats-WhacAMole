@@ -115,3 +115,6 @@ macOS 10.15 (Catalina) or older: Not officially supported (tested on macOS 12+).
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
 
+
+Design by 3995 Hz
+Proudly presented by Musimanda
