@@ -1,4 +1,5 @@
 # Whats Game - Whac-A-Mole with a Twist
+*My first game, dedicated to everyone who seeks a little joy.*
 
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
 Follow these steps to set up and build the project locally.
