@@ -60,7 +60,8 @@ Windows Packaging Instructions
 To create a standalone .exe file using PyInstaller, run the following command in Command Prompt:
 
 pip install pyinstaller
-pyinstaller --onefile --windowed --add-data "images;images" --add-data "sounds;sounds" --icon "appicon.ico" --name Whats main.py
+pyinstaller --onefile --windowed --add-data "images;images" --add-data "sounds;sounds" --add-data "appicon.ico;." --icon "C:\Users\YourUsername\Desktop\Whats_game\appicon.ico" --name Whats main.py
+
 ⚠️ No icon in the .exe? Change the filename to bypass cache.
 
 
@@ -105,7 +106,7 @@ Once completed, the installer Whats_Setup.exe will be generated in the Output fo
 ❗ Important Copyright Notice:
 
 Some audio assets are restricted to non-commercial use only (see CREDITS.txt for details).
-You MUST include CREDITS.txt in all distributed packages to comply with licensing terms.
+You MUST include CREDITS.txt (When creating the DMG and Installer, the path for the CREDITS file is: dist/CREDITS.txt) in all distributed packages to comply with licensing terms.
 For commercial use, replace them with CC0/licensed audio or obtain permission from the original authors.
 
 📦 Pre-Built Releases
