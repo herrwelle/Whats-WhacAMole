@@ -58,6 +58,32 @@ SHAKE_INTENSITY   = 5
 # ——————— 窗口与时钟 ———————
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Whats")
+
+# ——————— 窗口图标（Runtime Icon） ———————
+def set_app_icon():
+    """
+    尝试加载 ICO，再兜底 PNG，然后给窗口贴上定制小图标，
+    就像给程序戴上专属小帽子。
+    """
+    icon_surf = None
+    # 优先 ICO
+    ico_path = resource_path('appicon.ico')
+    if os.path.exists(ico_path):
+        try:
+            icon_surf = pygame.image.load(ico_path)
+        except Exception:
+            pass
+    # 兜底 PNG
+    if icon_surf is None:
+        png_path = resource_path('images/appicon32.png')
+        if os.path.exists(png_path):
+            icon_surf = pygame.image.load(png_path).convert_alpha()
+    # 应用到窗口
+    if icon_surf:
+        pygame.display.set_icon(icon_surf)
+
+set_app_icon()
+
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(False)
 
@@ -130,26 +156,23 @@ BUTTONS = {
     ) for i, k in enumerate(('easy','medium','hard'))
 }
 
-# 字体与文本
+# ——————— 字体与文本 ———————
 COLOR_WOOD  = (160,82,45)
 DARK_WALNUT = (75, 50, 30)
-font_btn    = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
-font_info   = pygame.font.SysFont('Comic Sans MS', 20, bold=True)
-font_score  = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
+font_btn        = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
+font_info       = pygame.font.SysFont('Comic Sans MS', 20, bold=True)
+font_info_small = pygame.font.SysFont('Comic Sans MS', 15, bold=True)  # 小号字体
+font_score      = pygame.font.SysFont('Comic Sans MS', 48, bold=True)
 
-exit_txt    = font_btn.render('Exit', True, COLOR_WOOD)
-exit_rect   = exit_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
+# Exit/Back 按钮
+exit_txt  = font_btn.render('Exit', True, COLOR_WOOD)
+exit_rect = exit_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
+back_txt  = font_btn.render('Back', True, COLOR_WOOD)
+back_rect = back_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
 
-# 信息文字
-version_txt = font_info.render('v1.0.1', True, DARK_WALNUT)
-brand_txt   = font_info.render('Musimanda', True, DARK_WALNUT)
-design_txt  = font_info.render('Design by 3995 Hz', True, DARK_WALNUT)
-design_rect   = design_txt.get_rect(bottomleft=(10, exit_rect.bottom))
-brand_rect    = brand_txt.get_rect(bottomleft=(10, design_rect.top - 5))
-version_rect  = version_txt.get_rect(bottomleft=(10, brand_rect.top - 5))
-
-back_txt    = font_btn.render('Back', True, COLOR_WOOD)
-back_rect   = back_txt.get_rect(bottomright=(WIDTH-10, HEIGHT-10))
+# —— 合并一行：版本·作者·设计 ——  
+info_txt  = font_info_small.render('v1.0.1 · Musimanda · Design by 3995 Hz', True, DARK_WALNUT)
+info_rect = info_txt.get_rect(bottomleft=(10, exit_rect.bottom))
 
 # 音乐路径
 ui_music  = resource_path('sounds/ui_music.mp3')
@@ -196,10 +219,10 @@ class Mole:
         self.pos      = list(self.path[0])
         self.visible  = True
         if self.mode=='hard' and self.misses>=3:
-            life = 1200
-            self.misses = 0
+            life    = 1200
+            self.misses= 0
         else:
-            life = random.choice(self.times)
+            life    = random.choice(self.times)
             if self.hits>=2:
                 life = max(min(self.times), life-50)
             if random.random()<self.esc:
@@ -210,13 +233,12 @@ class Mole:
                 self.escaping = False
         self.life = life
         self.next = now + life
-        self.frame = random.choice(maus_frames)
+        self.frame= random.choice(maus_frames)
         if appear_sounds: random.choice(appear_sounds).play()
 
     def update(self):
         now = pygame.time.get_ticks()
-        if now>=self.next:
-            self.action()
+        if now>=self.next: self.action()
         if self.escaping and self.visible and self.path_idx < len(self.path)-1:
             x1,y1 = self.path[self.path_idx]
             x2,y2 = self.path[self.path_idx+1]
@@ -226,8 +248,7 @@ class Mole:
                 self.path_idx += 1
 
     def draw(self):
-        if not self.visible:
-            return
+        if not self.visible: return
         surf = pygame.transform.scale(
             self.frame,
             (int(self.frame.get_width()*self.scale),
@@ -235,8 +256,7 @@ class Mole:
         screen.blit(surf, self.pos)
 
     def hit(self, x, y):
-        if not self.visible:
-            return 0
+        if not self.visible: return 0
         rect = pygame.Rect(
             *self.pos,
             int(maus_frames[0].get_width()*self.scale),
@@ -296,11 +316,9 @@ def menu_loop():
             else:
                 screen.blit(wood_imgs[k], r.topleft)
 
-        # 绘制文字
-        screen.blit(exit_txt,    exit_rect.topleft)
-        screen.blit(version_txt, version_rect.topleft)
-        screen.blit(brand_txt,   brand_rect.topleft)
-        screen.blit(design_txt,  design_rect.topleft)
+        # 文本：Exit + 信息一行
+        screen.blit(exit_txt, exit_rect.topleft)
+        screen.blit(info_txt, info_rect.topleft)
 
         # 锤子自动抬起
         if hammer_down and now - hammer_timer >= HAMMER_HOLD_TIME:
