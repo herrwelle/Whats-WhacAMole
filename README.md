@@ -104,11 +104,10 @@ Install Inno Setup:
 → https://jrsoftware.org/isinfo.php
 
 Compile:
-→ Open Whats.iss with Inno Setup Compiler, then click "Compile".
+→ Open Whats.iss with Inno Setup Compiler, and click the Compile button.
 
 Output:
 → Whats_Setup.exe will be saved to the Output folder (same directory).
-
 ```
 
 ❗ Important Copyright Notice:
