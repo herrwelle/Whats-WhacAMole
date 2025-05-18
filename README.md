@@ -44,7 +44,7 @@ python main.py   # Windows
 Cause: PNG files generated on macOS may use an incompatible format.
 Fix: Open the problematic image(s) in an editor (e.g., Paint, Photoshop, GIMP) and re-save them as PNG.
 Use Pre-fixed Images (Recommended):
-Download the images_win folder (included in this project) and overwrite the files in the images folder with the Windows-compatible versions.
+Overwrite images/ with images_win/ from this project for Windows compatibility.
 
 
 
@@ -105,14 +105,14 @@ Compile the Installer
 Open Whats.iss in Inno Setup Compiler, then click the "Compile" button.
 
 Output
-Once completed, the installer Whats_Setup.exe will be generated in the Output folder (located in the script directory).
+The installer Whats_Setup.exe will be generated in the Output folder (same directory as the script).
 
 ```
 ❗ Important Copyright Notice:
 
-Some audio assets are restricted to non-commercial use only (see CREDITS.txt for details).
-You MUST include CREDITS.txt (Path to CREDITS for DMG/Installer: dist/CREDITS.txt) in all distributed packages to comply with licensing terms.
-For commercial use, replace them with CC0/licensed audio or obtain permission from the original authors.
+Some audio assets are non-commercial only (see CREDITS.txt).
+You must include dist/CREDITS.txt in all distributions.
+For commercial use, replace them with CC0/licensed audio or get author permission.
 
 📦 Pre-Built Releases
 Download ready-to-play versions for:
