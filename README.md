@@ -1,4 +1,4 @@
-# Whats Game - 🐭 Whac-A-Mole with a Twist
+# Whats Game - Whac-A-Mole with a Twist
 <sub>*My first game, dedicated to everyone who seeks a little joy.*</sub>
 
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
