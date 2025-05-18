@@ -1,4 +1,5 @@
-# Whats Game - Whac-A-Mole with a Twist
+# <h1>Whats Game – Whac-A-Mole with a Twist <img src="images/maus/maus2.png" alt="Maus" height="32"></h1>
+
 <sub>*My first game, dedicated to everyone who seeks a little joy.*</sub>
 
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
