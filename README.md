@@ -9,7 +9,7 @@ Follow these steps to set up and build the project locally.
 
 # 📂 Initial Setup
 Create a project folder** (e.g., `Whats_Game`) on your Desktop or any preferred location.  
-
+<br><br>
 
 # 🛠️ Build Instructions
 ```bash
@@ -107,29 +107,26 @@ Open Whats.iss in Inno Setup Compiler, then click the "Compile" button.
 Output
 The installer Whats_Setup.exe will be generated in the Output folder (same directory as the script).
 
+📦 Pre-Built Releases
+Download ready-to-play versions for:
+macOS (Intel/ARM64)
+Windows
+See Releases page.
 ```
 ❗ Important Copyright Notice:
 
 Some audio assets are non-commercial only (see CREDITS.txt).
 You must include dist/CREDITS.txt in all distributions.
 For commercial use, replace them with CC0/licensed audio or get author permission.
-
-
-
-📦 Pre-Built Releases
-Download ready-to-play versions for:
-macOS (Intel/ARM64)
-Windows
-See Releases page.
-
+<br>
 
 
 ❓ Troubleshooting
 macOS 10.15 (Catalina) or older: Not officially supported (tested on macOS 12+).
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
+<br><br>
 
 
-
-Design by 3995 Hz
+Design by 3995 Hz  
 Proudly presented by Musimanda
