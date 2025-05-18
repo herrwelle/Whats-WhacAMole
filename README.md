@@ -12,10 +12,9 @@ Create a project folder** (e.g., `Whats_Game`) on your Desktop or any preferred 
 <br><br>
 
 # Build Instructions
-```bash
 1. Set Up Virtual Environment (venv)
 Navigate to your project folder and create a virtual environment:
-
+```bash
 cd ~/Desktop/Whats_Game          # Or your custom path
 cd C:\Users\YourUsername\...     # Or your custom path (Windows)
 
@@ -24,41 +23,43 @@ python -m venv venv              # Create virtual environment (Windows)
 
 source venv/bin/activate         # macOS
 venv\Scripts\activate            # Windows
-After activation, your terminal prompt should show (venv).
-
+# After activation, your terminal prompt should show (venv).
+```
 
 
 2. Install Dependencies
-<BASH>
+```bash
 pip3 install jaraco.text pygame py2app  # macOS
 pip install pygame py2app               # Windows
-⚠️ Windows users, please use main_win.py and rename it to main.py by removing the _win suffix.
+# ⚠️ Windows users, please use main_win.py and rename it to main.py by removing the _win suffix.
+```
 
 
 3. Test the Game
-<BASH>
+```bash
 python3 main.py  # macOS
 python main.py   # Windows
 
-⚠️ If you encounter the error pygame.error: Unsupported image format on Windows:
-Cause: PNG files generated on macOS may use an incompatible format.
-Fix: Open the problematic image(s) in an editor (e.g., Paint, Photoshop, GIMP) and re-save them as PNG.
-Use Pre-fixed Images (Recommended):
-Overwrite images/ with images_win/ from this project for Windows compatibility.
+# ⚠️ If you encounter the error pygame.error: Unsupported image format on Windows:
+# Cause: PNG files generated on macOS may use an incompatible format.
+# Fix: Open the problematic image(s) in an editor (e.g., Paint, Photoshop, GIMP) and re-save them as PNG.
+# Use Pre-fixed Images (Recommended):
+# Overwrite images/ with images_win/ from this project for Windows compatibility.
+```
 
 
-
-4. Build macOS/Windows Executable
-<BASH>
+4.1 Build macOS Executable
+```bash
 python3 setup.py py2app       # macOS
-The app bundle will be generated in dist/Whats.app.
-⚠️ For ARM64, use the file setup.py_ARM64 and For x64, use the file setup.py_x64.
-⚠️ Important: Before using, remove "_ARM64" or "_x64" from the filename, keeping only setup.py
 
+# The app bundle will be generated in dist/Whats.app.
+# ⚠️ For ARM64, use the file setup.py_ARM64 and For x64, use the file setup.py_x64.
+# ⚠️ Important: Before using, remove "_ARM64" or "_x64" from the filename, keeping only setup.py
+```
 
-Windows Packaging Instructions
+4.2 Windows Packaging Instructions
 To create a standalone .exe file using PyInstaller, run the following command in Command Prompt:
-
+```bash
 pip install pyinstaller
 pyinstaller --onefile --windowed ^
   --add-data "images;images" ^
@@ -67,18 +68,19 @@ pyinstaller --onefile --windowed ^
   --icon "C:\Users\YourUsername\Desktop\Whats_game\appicon.ico" ^
   --name Whats ^
   main.py
-⚠️ No icon in the .exe? Change the filename to bypass cache.
+
+# ⚠️ No icon in the .exe? Change the filename to bypass cache.
+```
 
 
-
-5. Create DMG (macOS Only)
+5.1 Create DMG (macOS Only)
 First, install create-dmg (if needed):
+```bash
 
-<BASH>
 brew install create-dmg
 cd ~/Desktop/Whats_Game    # Or your custom path
 
-<BASH>
+
 create-dmg \
   --volname "Whats 1.0.1" \
   --volicon "appicon.icns" \
@@ -92,10 +94,12 @@ create-dmg \
   --app-drop-link 400 100 \
   "../Whats_1.0.1.dmg" \
   "dist/"
+```
 
 
-
-Creating an Installer (Windows Only)
+5.2 Creating an Installer (Windows Only)
+```bash
+<!--
 Install Inno Setup
 
 Download and install from the official website:
@@ -106,13 +110,10 @@ Open Whats.iss in Inno Setup Compiler, then click the "Compile" button.
 
 Output
 The installer Whats_Setup.exe will be generated in the Output folder (same directory as the script).
+-->
 
-📦 Pre-Built Releases
-Download ready-to-play versions for:
-macOS (Intel/ARM64)
-Windows
-See Releases page.
 ```
+
 ❗ Important Copyright Notice:
 
 Some audio assets are non-commercial only (see CREDITS.txt).
