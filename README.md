@@ -1,4 +1,4 @@
-# Whats Game - Whac-A-Mole with a Twist
+# Whats Game - 🐭 Whac-A-Mole with a Twist
 <sub>*My first game, dedicated to everyone who seeks a little joy.*</sub>
 
 A humorous take on the classic Whac-A-Mole game, built with Pygame.  
@@ -7,11 +7,11 @@ Follow these steps to set up and build the project locally.
 ![Game Demo GIF](Demo/Whats_demo.gif)
 
 
-# 📂 Initial Setup
+# Initial Setup
 Create a project folder** (e.g., `Whats_Game`) on your Desktop or any preferred location.  
 <br><br>
 
-# 🛠️ Build Instructions
+# Build Instructions
 ```bash
 1. Set Up Virtual Environment (venv)
 Navigate to your project folder and create a virtual environment:
