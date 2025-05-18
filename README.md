@@ -99,18 +99,15 @@ create-dmg \
 
 5.2 Creating an Installer (Windows Only)
 ```bash
-<!--
-Install Inno Setup
 
-Download and install from the official website:
-https://jrsoftware.org/isinfo.php
+Install Inno Setup:
+→ https://jrsoftware.org/isinfo.php
 
-Compile the Installer
-Open Whats.iss in Inno Setup Compiler, then click the "Compile" button.
+Compile:
+→ Open Whats.iss with Inno Setup Compiler, then click "Compile".
 
-Output
-The installer Whats_Setup.exe will be generated in the Output folder (same directory as the script).
--->
+Output:
+→ Whats_Setup.exe will be saved to the Output folder (same directory).
 
 ```
 
