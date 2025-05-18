@@ -23,6 +23,7 @@ python -m venv venv              # Create virtual environment (Windows)
 
 source venv/bin/activate         # macOS
 venv\Scripts\activate            # Windows
+
 # After activation, your terminal prompt should show (venv).
 ```
 
@@ -31,7 +32,8 @@ venv\Scripts\activate            # Windows
 ```bash
 pip3 install jaraco.text pygame py2app  # macOS
 pip install pygame py2app               # Windows
-# ⚠️ Windows users, please use main_win.py and rename it to main.py by removing the _win suffix.
+
+# Windows users, please use main_win.py and rename it to main.py by removing the _win suffix.
 ```
 
 
@@ -40,7 +42,7 @@ pip install pygame py2app               # Windows
 python3 main.py  # macOS
 python main.py   # Windows
 
-# ⚠️ If you encounter the error pygame.error: Unsupported image format on Windows:
+# If you encounter the error pygame.error: Unsupported image format on Windows:
 # Cause: PNG files generated on macOS may use an incompatible format.
 # Fix: Open the problematic image(s) in an editor (e.g., Paint, Photoshop, GIMP) and re-save them as PNG.
 # Use Pre-fixed Images (Recommended):
@@ -53,8 +55,8 @@ python main.py   # Windows
 python3 setup.py py2app       # macOS
 
 # The app bundle will be generated in dist/Whats.app.
-# ⚠️ For ARM64, use the file setup.py_ARM64 and For x64, use the file setup.py_x64.
-# ⚠️ Important: Before using, remove "_ARM64" or "_x64" from the filename, keeping only setup.py
+# For ARM64, use the file setup.py_ARM64 and For x64, use the file setup.py_x64.
+# Important: Before using, remove "_ARM64" or "_x64" from the filename, keeping only setup.py
 ```
 
 4.2 Windows Packaging Instructions
@@ -69,7 +71,7 @@ pyinstaller --onefile --windowed ^
   --name Whats ^
   main.py
 
-# ⚠️ No icon in the .exe? Change the filename to bypass cache.
+# No icon in the .exe? Change the filename to bypass cache.
 ```
 
 
@@ -110,7 +112,7 @@ Output:
 → Whats_Setup.exe will be saved to the Output folder (same directory).
 ```
 
-❗ Important Copyright Notice:
+! Important Copyright Notice:
 
 Some audio assets are non-commercial only (see CREDITS.txt).
 You must include dist/CREDITS.txt in all distributions.
@@ -118,7 +120,7 @@ For commercial use, replace them with CC0/licensed audio or get author permissio
 <br>
 
 
-❓ Troubleshooting
+? Troubleshooting
 macOS 10.15 (Catalina) or older: Not officially supported (tested on macOS 12+).
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
