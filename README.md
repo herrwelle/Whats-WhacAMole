@@ -12,10 +12,10 @@ Create a project folder** (e.g., `Whats_Game`) on your Desktop or any preferred 
 
 
 # 🛠️ Build Instructions
-
+```bash
 1. Set Up Virtual Environment (venv)
 Navigate to your project folder and create a virtual environment:
-```bash
+
 cd ~/Desktop/Whats_Game          # Or your custom path
 cd C:\Users\YourUsername\...     # Or your custom path (Windows)
 
@@ -60,8 +60,13 @@ Windows Packaging Instructions
 To create a standalone .exe file using PyInstaller, run the following command in Command Prompt:
 
 pip install pyinstaller
-pyinstaller --onefile --windowed --add-data "images;images" --add-data "sounds;sounds" --add-data "appicon.ico;." --icon "C:\Users\YourUsername\Desktop\Whats_game\appicon.ico" --name Whats main.py
-
+pyinstaller --onefile --windowed ^
+  --add-data "images;images" ^
+  --add-data "sounds;sounds" ^
+  --add-data "appicon.ico;." ^
+  --icon "C:\Users\YourUsername\Desktop\Whats_game\appicon.ico" ^
+  --name Whats ^
+  main.py
 ⚠️ No icon in the .exe? Change the filename to bypass cache.
 
 
@@ -102,11 +107,11 @@ Open Whats.iss in Inno Setup Compiler, then click the "Compile" button.
 Output
 Once completed, the installer Whats_Setup.exe will be generated in the Output folder (located in the script directory).
 
-
+```
 ❗ Important Copyright Notice:
 
 Some audio assets are restricted to non-commercial use only (see CREDITS.txt for details).
-You MUST include CREDITS.txt (When creating the DMG and Installer, the path for the CREDITS file is: dist/CREDITS.txt) in all distributed packages to comply with licensing terms.
+You MUST include CREDITS.txt (Path to CREDITS for DMG/Installer: dist/CREDITS.txt) in all distributed packages to comply with licensing terms.
 For commercial use, replace them with CC0/licensed audio or obtain permission from the original authors.
 
 📦 Pre-Built Releases
