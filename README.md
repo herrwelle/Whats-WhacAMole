@@ -122,9 +122,14 @@ For commercial use, replace them with CC0/licensed audio or get author permissio
 
 
 ? Troubleshooting
-macOS 10.15 (Catalina) or older: Not officially supported (tested on macOS 12+).
+Tested on macOS 12+. May not work on macOS 11 or earlier.
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
+<br>
+
+* Note: Icon Conversion Website
+  https://www.aconvert.com/image/
+  https://convertio.co/
 <br><br>
 
 
