@@ -127,9 +127,9 @@ Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
 <br>
 
-* Note: Icon Conversion Website
-  https://www.aconvert.com/image/
-  https://convertio.co/
+Note: Icon Conversion Website  
+https://www.aconvert.com/image/  
+https://convertio.co/
 <br><br>
 
 
