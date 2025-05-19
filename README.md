@@ -2,12 +2,11 @@
 
 <sub>*My first game, dedicated to everyone who seeks a little joy.*</sub>
 
-🎮 A fun and slightly twisted take on the classic Whac-A-Mole game — built with Pygame.
+<img src="images/maus/maus1.png" alt="Maus" height="20"></h1> A fun and slightly twisted take on the classic Whac-A-Mole game — built with Pygame.
 
-🖱️ Simple click-to-hit gameplay, cartoon visuals, and a few surprises...  
-This is my first indie game project — open source and ready to play!
+<img src="images/maus/maus3.png" alt="Maus" height="20"></h1> Simple click-to-hit gameplay, cartoon visuals, and a few surprises...  
 
-🛠️ Setup instructions below if you want to try or modify the game.
+<img src="images/maus/maus4.png" alt="Maus" height="20"></h1> Setup instructions below if you want to try or modify the game.
 
 ![Game Demo GIF](Demo/Whats_demo.gif)
 
