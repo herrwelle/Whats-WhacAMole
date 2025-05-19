@@ -116,7 +116,7 @@ Output:
 → Whats_Setup.exe will be saved to the Output folder (same directory).
 ```
 
-! Important Copyright Notice:
+<img src="images/hammer/1.png" alt="Hammer" height="20"></h1> Important Copyright Notice:
 
 Some audio assets are non-commercial only (see CREDITS.txt).
 You must include dist/CREDITS.txt in all distributions.
@@ -124,7 +124,7 @@ For commercial use, replace them with CC0/licensed audio or get author permissio
 <br>
 
 
-? Troubleshooting
+<img src="images/hammer/2.png" alt="Hammer" height="15"></h1> Troubleshooting
 Tested on macOS 12+. May not work on macOS 11 or earlier.
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
