@@ -1,4 +1,4 @@
-# <h1>Whac-A-Mole in Pygame 🕹️ | Funny Clicker Arcade - Whats <img src="images/maus/maus2.png" alt="Maus" height="32"></h1>
+# <h1>Whac-A-Mole Game in Pygame – Whats <img src="images/maus/maus2.png" alt="Maus" height="32"></h1>
 
 <sub>*My first game, dedicated to everyone who seeks a little joy.*</sub>
 
