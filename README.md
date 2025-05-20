@@ -4,9 +4,9 @@
 
 <img src="images/maus/maus1.png" alt="Maus" height="20"></h1> A fun and slightly twisted take on the classic Whac-A-Mole game — built with Pygame.
 
-<img src="images/maus/maus3.png" alt="Maus" height="20"></h1> Simple click-to-hit gameplay, cartoon visuals, and a few surprises...  
+<img src="images/maus/maus4.png" alt="Maus" height="20"></h1> Simple click-to-hit gameplay, cartoon visuals, and a few surprises...  
 
-<img src="images/maus/maus4.png" alt="Maus" height="20"></h1> Setup instructions below if you want to try or modify the game.
+<img src="images/maus/maus3.png" alt="Maus" height="20"></h1> Setup instructions below if you want to try or modify the game.
 
 ![Game Demo GIF](Demo/Whats_demo.gif)
 
@@ -124,7 +124,7 @@ For commercial use, replace them with CC0/licensed audio or get author permissio
 <br>
 
 
-<img src="images/hammer/2.png" alt="Hammer" height="15"></h1> Troubleshooting
+<img src="images/hammer/1.png" alt="Hammer" height="20"></h1> Troubleshooting
 Tested on macOS 12+. May not work on macOS 11 or earlier.
 Permission errors: Use venv or --user flag instead of --break-system-packages.
 DMG creation fails: Ensure Whats.app is in dist/ and paths are correct.
